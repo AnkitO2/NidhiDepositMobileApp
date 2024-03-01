@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+
+    <item android:id="@+id/Loan1"
+        android:icon="@drawable/person_icon"
+        android:title="MemberLoginWithIDAndPassword"/>
+    <item android:id="@+id/Loan2"
+        android:icon="@drawable/person_icon"
+        android:title="MemberHomePageAndDashboard"/>
+    <item android:id="@+id/Loan3"
+        android:icon="@drawable/person_icon"
+        android:title="Logout"/>
+</group>
+
+</menu>
