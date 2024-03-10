@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:fitsSystemWindows="true"
+    tools:context=".Member_R_List">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/appBar1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#444145"
+            android:padding="10dp"
+            >
+            <ImageView
+                android:id="@+id/menuIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/baseline_menu_" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/menuIcon"
+                android:textStyle="bold"
+                android:text="Loan Management"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/massage"
+            android:textSize="20dp"
+            android:textColor="#E10A0A"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:weightSum="5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="Account Id"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="Account Open Date"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="Plan Amount"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="Plan Mode"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Plan No"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="Plan Type"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/accountId1"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/oDate1"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/pAmmount1"
+                android:layout_width="69dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/pMode1"
+                android:layout_width="61dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+            <TextView
+                android:id="@+id/pNo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/pType1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#EA0C0C"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

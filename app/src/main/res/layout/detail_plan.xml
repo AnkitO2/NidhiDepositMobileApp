@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".PlanList">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <LinearLayout
+            android:id="@+id/appBar1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#444145"
+            android:padding="10dp"
+            >
+            <ImageView
+                android:id="@+id/menuIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/baseline_menu_" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/menuIcon"
+                android:textStyle="bold"
+                android:text="Loan Management"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="#E10A0A"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Message"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/homeData1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E30E0E"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Account Expiry Date"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/homeData2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E30E0E"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Account Id"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/homeData3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#EF0B0B"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Account Open Date"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/homeData4"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E30E0E"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Account Open Status"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/homeData5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#DC1A1A"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Approve Date"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData6"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#D81414"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Beneficiary Age"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData7"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#DD1818"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Beneficiary Name"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData8"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#DF1313"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Beneficiary Relation"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:id="@+id/homeData9"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        android:text="Welcome"
+                        android:textColor="#E11010"
+                        android:textSize="12sp" />
+                </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Branch Name"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData10"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Collector Id"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData11"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Collector Name"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData12"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Lock Status"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData13"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Lock Type"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData14"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="MIP Amount"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData15"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="MIP Mode"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData16"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Amount"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData17"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Paid"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData18"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Paid Date"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData19"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Paid Mode"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData20"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Payable"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData21"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Maturity Status"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/homeData22"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="Welcome"
+                android:textColor="#E11010"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu">
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
+

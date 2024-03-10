@@ -21,13 +21,17 @@ public class MemberHomePageAndDashboard {
     private String memberId;
     @SerializedName("MemberName")
     @Expose
-    private Object memberName;
+    private String memberName;
     @SerializedName("SavingBalance")
     @Expose
     private String savingBalance;
     @SerializedName("SavingId")
     @Expose
     private String savingId;
+    @SerializedName("TotalBalance")
+    @Expose
+    private String totalBalance;
+
 
     public String getAdvisorBalance() {
         return advisorBalance;
@@ -69,11 +73,11 @@ public class MemberHomePageAndDashboard {
         this.memberId = memberId;
     }
 
-    public Object getMemberName() {
+    public String getMemberName() {
         return memberName;
     }
 
-    public void setMemberName(Object memberName) {
+    public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
@@ -93,4 +97,11 @@ public class MemberHomePageAndDashboard {
         this.savingId = savingId;
     }
 
+    public String getTotalBalance() {
+        return totalBalance;
+    }
+
+    public void setTotalBalance(String totalBalance) {
+        this.totalBalance = totalBalance;
+    }
 }

@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class MemberLoginWithIDAndPasswordResponse implements Serializable
 {
-
     @SerializedName("LoginMessage")
     @Expose
     private String loginMessage;
@@ -32,11 +31,9 @@ public class MemberLoginWithIDAndPasswordResponse implements Serializable
     public MemberLoginWithIDAndPassword getMemberLoginWithIDAndPassword() {
         return memberLoginWithIDAndPassword;
     }
-
     public void setMemberLoginWithIDAndPassword(MemberLoginWithIDAndPassword memberLoginWithIDAndPassword) {
         this.memberLoginWithIDAndPassword = memberLoginWithIDAndPassword;
     }
-
     public String getMessage() {
         return message;
     }
@@ -52,5 +49,4 @@ public class MemberLoginWithIDAndPasswordResponse implements Serializable
     public void setStatus(boolean status) {
         this.status = status;
     }
-
 }

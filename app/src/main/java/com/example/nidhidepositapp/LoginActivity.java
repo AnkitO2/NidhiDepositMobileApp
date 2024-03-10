@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     SharedPreferences sharedPreferences;
-    String memberId ="",password ="";
+    String memberId ="",password ="" ,token="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +44,11 @@ public class LoginActivity extends AppCompatActivity {
         request.setMemberId(binding.usernameInputEditText.getText().toString());
         request.setPassword(binding.passwordInputEditText.getText().toString());
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("memberId",binding.usernameInputEditText.getText().toString());
-        editor.putString("password",binding.passwordInputEditText.getText().toString());
-        editor.apply();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("memberId",binding.usernameInputEditText.getText().toString());
+//        editor.putString("password",binding.passwordInputEditText.getText().toString());
+//        editor.apply();
+
 
 //        SharedPreferences.Editor editor = sharedpreferences.edit();
 //        editor.putString("userId",binding.usernameInputEditText.getText().toString());
@@ -59,14 +60,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<MemberLoginWithIDAndPasswordResponse> call, Response<MemberLoginWithIDAndPasswordResponse> response) {
                 if (response.isSuccessful()){
                     if (response.body().getLoginMessage().equalsIgnoreCase("Member Login Successfull")){
-                        SharedPreferences.Editor editor =sharedPreferences.edit();
-                        editor.putString("loginStatus",response.body().getLoginMessage());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("loginStatus", response.body().getLoginMessage());
                         editor.apply();
 
+                        SharedPreferences.Editor memberidEditor = sharedPreferences.edit(); // Corrected variable name
+                      //  memberidEditor.putString("memberId", response.body().getMemberLoginWithIDAndPassword().getMemberId());
+                        memberidEditor.apply(); // Corrected variable name
+
+                        //Toast.makeText(LoginActivity.this, ""+response.body().getMemberLoginWithIDAndPassword().getMemberId(), Toast.LENGTH_SHORT).show();
                         Intent intent =  new Intent(LoginActivity.this,MemberDashboard.class);
                        // intent.putExtra("Year",""+response.body().getMemberLoginWithIDAndPassword().getFinYear());
-                        intent.putExtra("MemberID",""+response.body().getMemberLoginWithIDAndPassword().getMemberId());
-                        intent.putExtra("MemberID",""+binding.usernameInputEditText.getText().toString());
+//                        intent.putExtra("MemberID",""+response.body().getMemberLoginWithIDAndPassword().getMemberId());
+//                        intent.putExtra("MemberID",""+binding.usernameInputEditText.getText().toString());
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this,"response is not successfully"+response.body().getLoginMessage(),Toast.LENGTH_SHORT).show();

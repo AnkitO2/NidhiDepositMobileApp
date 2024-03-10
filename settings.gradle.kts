@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "NidhiDepositApp"
 include(":app")
- 
+

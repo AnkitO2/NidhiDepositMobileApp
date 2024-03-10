@@ -39,7 +39,6 @@
                 />
         </LinearLayout>
         <TextView
-            android:id="@+id/MemberID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome Member Dashboard"
@@ -47,34 +46,61 @@
             android:textColor="#131313"
             android:textStyle="bold"
             android:textAlignment="center"/>
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginHorizontal="16dp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:weightSum="2">-->
-<!--            <TextView-->
-<!--                android:id="@+id/memberId"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textAlignment="center"-->
-<!--                android:text="Welcome"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="12sp" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Member Id"
+                android:textColor="#101112"
+                android:textSize="15sp" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/year"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Welcome"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="12sp" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/memberId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Welcome"
+                android:textColor="#E11111"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="Token Id"
+                android:textColor="#101112"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tokenId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Welcome"
+                android:textColor="#E11111"
+                />
+        </LinearLayout>
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView1"

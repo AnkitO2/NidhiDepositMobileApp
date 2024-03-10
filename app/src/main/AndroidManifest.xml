@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,6 +16,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NidhiDepositApp"
         tools:targetApi="31">
+        <activity
+            android:name=".Member_R_Detail"
+            android:exported="false" />
+        <activity
+            android:name=".Member_R_List"
+            android:exported="false" />
+        <activity
+            android:name=".LedgerDetail"
+            android:exported="false" />
+        <activity
+            android:name=".LedgerList"
+            android:exported="false" />
+        <activity
+            android:name=".PlanDetail"
+            android:exported="false" />
+        <activity
+            android:name=".PlanList"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
