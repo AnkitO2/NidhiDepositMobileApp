@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <group android:checkableBehavior="single">
-
     <item android:id="@+id/Loan1"
         android:icon="@drawable/person_icon"
-        android:title="MemberLoginWithIDAndPassword"/>
+        android:title="MemberHomePageAndDashboard"/>
     <item android:id="@+id/Loan2"
         android:icon="@drawable/person_icon"
-        android:title="MemberHomePageAndDashboard"/>
+        android:title="MemberFDPlanList"/>
     <item android:id="@+id/Loan3"
         android:icon="@drawable/person_icon"
-        android:title="MemberFDPlanList"/>
+        android:title="MemberFDPlanDetail"/>
     <item android:id="@+id/Loan4"
         android:icon="@drawable/person_icon"
-        android:title="MemberFDPlanDetail"/>
+        android:title="MemberSavingLedgerList"/>
     <item android:id="@+id/Loan5"
         android:icon="@drawable/person_icon"
-        android:title="MemberSavingLedgerList"/>
+        android:title="MemberSavingLedgerDetail"/>
     <item android:id="@+id/Loan6"
         android:icon="@drawable/person_icon"
-        android:title="MemberSavingLedgerDetail"/>
+        android:title="MemberRDPlanList"/>
     <item android:id="@+id/Loan7"
         android:icon="@drawable/person_icon"
-        android:title="MemberRDPlanList"/>
-    <item android:id="@+id/Loan8"
-        android:icon="@drawable/person_icon"
         android:title="MemberRDPlanDetail"/>
-    <item android:id="@+id/Loan9"
+    <item android:id="@+id/Loan8"
         android:icon="@drawable/person_icon"
         android:title="Logout"/>
 </group>

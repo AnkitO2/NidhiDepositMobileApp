@@ -3,6 +3,7 @@ import com.example.nidhidepositapp.Request.MemberFDPlanDetailRequest;
 import com.example.nidhidepositapp.Request.MemberFDPlanListRequest;
 import com.example.nidhidepositapp.Request.MemberHomePageAndDashboardRequest;
 import com.example.nidhidepositapp.Request.MemberLoginWithIDAndPasswordRequest;
+import com.example.nidhidepositapp.Request.MemberRDPlanDetailRequest;
 import com.example.nidhidepositapp.Request.MemberRDPlanListRequest;
 import com.example.nidhidepositapp.Request.MemberSavingLedgerDetailRequest;
 import com.example.nidhidepositapp.Request.MemberSavingLedgerListRequest;
@@ -10,6 +11,7 @@ import com.example.nidhidepositapp.Response.MemberFDPlanDetailResponse;
 import com.example.nidhidepositapp.Response.MemberFDPlanListResponse;
 import com.example.nidhidepositapp.Response.MemberHomePageAndDashboardResponse;
 import com.example.nidhidepositapp.Response.MemberLoginWithIDAndPasswordResponse;
+import com.example.nidhidepositapp.Response.MemberRDPlanDetailResponse;
 import com.example.nidhidepositapp.Response.MemberRDPlanListResponse;
 import com.example.nidhidepositapp.Response.MemberSavingLedgerDetailResponse;
 import com.example.nidhidepositapp.Response.MemberSavingLedgerListResponse;
@@ -38,4 +40,6 @@ Call<MemberFDPlanListResponse>PlanListActivity(@Body MemberFDPlanListRequest mem
     Call<MemberSavingLedgerDetailResponse>LedgerDetailActivity(@Body MemberSavingLedgerDetailRequest memberSavingLedgerDetailRequest);
 @POST("Service/MemberRDPlanList")
     Call<MemberRDPlanListResponse>RDPlanListActivity(@Body MemberRDPlanListRequest memberRDPlanListRequest);
+@POST("Service/MemberRDPlanDetail")
+    Call<MemberRDPlanDetailResponse>RDPlanDetailActivity(@Body MemberRDPlanDetailRequest memberRDPlanDetailRequest);
 }

@@ -3,10 +3,7 @@ package com.example.nidhidepositapp.Response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class MemberLoginWithIDAndPasswordResponse implements Serializable
-{
+public class MemberLoginWithIDAndPasswordResponse {
     @SerializedName("LoginMessage")
     @Expose
     private String loginMessage;
@@ -31,9 +28,11 @@ public class MemberLoginWithIDAndPasswordResponse implements Serializable
     public MemberLoginWithIDAndPassword getMemberLoginWithIDAndPassword() {
         return memberLoginWithIDAndPassword;
     }
+
     public void setMemberLoginWithIDAndPassword(MemberLoginWithIDAndPassword memberLoginWithIDAndPassword) {
         this.memberLoginWithIDAndPassword = memberLoginWithIDAndPassword;
     }
+
     public String getMessage() {
         return message;
     }

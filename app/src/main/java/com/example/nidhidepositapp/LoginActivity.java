@@ -44,16 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         request.setMemberId(binding.usernameInputEditText.getText().toString());
         request.setPassword(binding.passwordInputEditText.getText().toString());
 
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("memberId",binding.usernameInputEditText.getText().toString());
-//        editor.putString("password",binding.passwordInputEditText.getText().toString());
-//        editor.apply();
 
-
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//        editor.putString("userId",binding.usernameInputEditText.getText().toString());
-//        editor.putString("password",binding.passwordInputEditText.getText().toString());
-//        editor.apply();
 
         RetrofitClient.getClient().LoginIdAndPassword(request).enqueue(new Callback<MemberLoginWithIDAndPasswordResponse>() {
             @Override
@@ -64,15 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("loginStatus", response.body().getLoginMessage());
                         editor.apply();
 
-                        SharedPreferences.Editor memberidEditor = sharedPreferences.edit(); // Corrected variable name
-                      //  memberidEditor.putString("memberId", response.body().getMemberLoginWithIDAndPassword().getMemberId());
-                        memberidEditor.apply(); // Corrected variable name
+                        SharedPreferences.Editor  memberId= sharedPreferences.edit(); // Corrected variable name
+                        memberId.putString("memberId", response.body().getMemberLoginWithIDAndPassword().getMemberId());
+                        memberId.apply(); // Corrected variable name
 
-                        //Toast.makeText(LoginActivity.this, ""+response.body().getMemberLoginWithIDAndPassword().getMemberId(), Toast.LENGTH_SHORT).show();
+                        //advisor token as a variable (token) leke gaye
+                        SharedPreferences.Editor token = sharedPreferences.edit();
+                        token.putString("token", response.body().getMemberLoginWithIDAndPassword().getTokenString());
+                        token.apply();
+
+                        Toast.makeText(LoginActivity.this, ""+response.body().getMemberLoginWithIDAndPassword().getMemberId(), Toast.LENGTH_SHORT).show();
                         Intent intent =  new Intent(LoginActivity.this,MemberDashboard.class);
-                       // intent.putExtra("Year",""+response.body().getMemberLoginWithIDAndPassword().getFinYear());
-//                        intent.putExtra("MemberID",""+response.body().getMemberLoginWithIDAndPassword().getMemberId());
-//                        intent.putExtra("MemberID",""+binding.usernameInputEditText.getText().toString());
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this,"response is not successfully"+response.body().getLoginMessage(),Toast.LENGTH_SHORT).show();

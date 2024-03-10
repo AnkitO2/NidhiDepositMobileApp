@@ -13,6 +13,7 @@ public class MemberLoginWithIDAndPassword implements Serializable
     @Expose
     private String tokenString;
 
+
     public String getMemberId() {
         return memberId;
     }

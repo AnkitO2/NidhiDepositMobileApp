@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ SharedPreferences sharedPreferences;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding =DetailLedgerBinding.inflate(getLayoutInflater());
+        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         LedgerDetailData();
         setContentView(binding.getRoot());
         binding.menuIcon.setOnClickListener(v -> {
@@ -38,32 +40,42 @@ SharedPreferences sharedPreferences;
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int itemId = menuItem.getItemId();
                 if (itemId == R.id.Loan1){
-                    Intent intent = new Intent(LedgerDetail.this,MainActivity.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent = new Intent(LedgerDetail.this,HomeActivity.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan2) {
-                    Intent intent = new Intent(LedgerDetail.this,HomeActivity.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent = new Intent(LedgerDetail.this,PlanList.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(LedgerDetail.this,PlanList.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent = new Intent(LedgerDetail.this,PlanDetail.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(LedgerDetail.this,PlanDetail.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent =new Intent(LedgerDetail.this,LedgerList.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(LedgerDetail.this,LedgerList.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent = new Intent(LedgerDetail.this,MemberDashboard.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId ==R.id.Loan6) {
-                    Intent intent = new Intent(LedgerDetail.this,MemberDashboard.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
+                    Intent intent = new Intent(LedgerDetail.this,Member_R_List.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId == R.id.Loan9) {
+                } else if (itemId ==R.id.Loan7) {
+                    Intent intent = new Intent(LedgerDetail.this,Member_R_Detail.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
+                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
+                    startActivity(intent);
+                } else if (itemId ==R.id.Loan8) {
                     Intent intent = new Intent(LedgerDetail.this,LoginActivity.class);
-                    intent.putExtra("MemberID",""+getIntent().getStringExtra("MemberID"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("loginStatus", "");
                     editor.apply();
@@ -75,29 +87,31 @@ SharedPreferences sharedPreferences;
     }
     void LedgerDetailData(){
         MemberSavingLedgerDetailRequest request = new MemberSavingLedgerDetailRequest();
-        request.setMemberId(getIntent().getStringExtra("MemberID"));
+        request.setMemberId(getIntent().getStringExtra("memberId"));
         request.setTokenString(getIntent().getStringExtra("token"));
         request.setTransId("4");
         RetrofitClient.getClient().LedgerDetailActivity(request).enqueue(new Callback<MemberSavingLedgerDetailResponse>() {
             @Override
             public void onResponse(Call<MemberSavingLedgerDetailResponse> call, Response<MemberSavingLedgerDetailResponse> response) {
-                if (response.isSuccessful()){
+                if (response.body().getMessage().equalsIgnoreCase("Successful")){
                     Log.d("Response", "Body: " + response.body().toString());
                        binding.homeData1.setText(response.body().getMessage());
-//                       binding.homeData2.setText(response.body().getMemberSavingLedgerDetail().getBranchName());
-//                       binding.homeData3.setText(response.body().getMemberSavingLedgerDetail().getDeposit());
-//                       binding.homeData4.setText(response.body().getMemberSavingLedgerDetail().getDescription());
-//                       binding.homeData5.setText(response.body().getMemberSavingLedgerDetail().getEntryType());
-//                       binding.homeData6.setText(response.body().getMemberSavingLedgerDetail().getMemberId());
-//                       binding.homeData7.setText(response.body().getMemberSavingLedgerDetail().getMemberName());
-//                       binding.homeData8.setText(response.body().getMemberSavingLedgerDetail().getSavingId());
-//                       binding.homeData9.setText(response.body().getMemberSavingLedgerDetail().getTransId());
-//                       binding.homeData10.setText(response.body().getMemberSavingLedgerDetail().getTransactionDate());
-//                       binding.homeData11.setText(response.body().getMemberSavingLedgerDetail().getVoucherId());
-//                       binding.homeData12.setText(response.body().getMemberSavingLedgerDetail().getWithdrawl());
+                       binding.homeData2.setText(response.body().getMemberSavingLedgerDetail().getBranchName());
+                       binding.homeData3.setText(response.body().getMemberSavingLedgerDetail().getDeposit());
+                       binding.homeData4.setText(response.body().getMemberSavingLedgerDetail().getDescription());
+                       binding.homeData5.setText(response.body().getMemberSavingLedgerDetail().getEntryType());
+                       binding.homeData6.setText(response.body().getMemberSavingLedgerDetail().getMemberId());
+                       binding.homeData7.setText(response.body().getMemberSavingLedgerDetail().getMemberName());
+                       binding.homeData8.setText(response.body().getMemberSavingLedgerDetail().getSavingId());
+                       binding.homeData9.setText(response.body().getMemberSavingLedgerDetail().getTransId());
+                       binding.homeData10.setText(response.body().getMemberSavingLedgerDetail().getTransactionDate());
+                       binding.homeData11.setText(response.body().getMemberSavingLedgerDetail().getVoucherId());
+                       binding.homeData12.setText(response.body().getMemberSavingLedgerDetail().getWithdrawl());
 
                 }else {
                     Toast.makeText(LedgerDetail.this, "response is not successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent =new Intent(LedgerDetail.this,LoginActivity.class);
+                    startActivity(intent);
                 }
             }
             @Override
