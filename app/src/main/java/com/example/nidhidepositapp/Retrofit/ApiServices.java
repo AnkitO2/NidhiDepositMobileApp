@@ -38,8 +38,10 @@ Call<MemberFDPlanListResponse>PlanListActivity(@Body MemberFDPlanListRequest mem
 
 @POST("Service/MemberSavingLedgerDetail")
     Call<MemberSavingLedgerDetailResponse>LedgerDetailActivity(@Body MemberSavingLedgerDetailRequest memberSavingLedgerDetailRequest);
+
 @POST("Service/MemberRDPlanList")
     Call<MemberRDPlanListResponse>RDPlanListActivity(@Body MemberRDPlanListRequest memberRDPlanListRequest);
+
 @POST("Service/MemberRDPlanDetail")
     Call<MemberRDPlanDetailResponse>RDPlanDetailActivity(@Body MemberRDPlanDetailRequest memberRDPlanDetailRequest);
 }

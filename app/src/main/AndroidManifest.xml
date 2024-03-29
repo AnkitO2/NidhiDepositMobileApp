@@ -17,6 +17,9 @@
         android:theme="@style/Theme.NidhiDepositApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Member_R_Detail"
             android:exported="false" />
         <activity

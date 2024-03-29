@@ -47,7 +47,7 @@
             android:textColor="#E10A0A"
             android:textStyle="bold"
             android:textAlignment="center"/>
-
+<!--Recyler view kaha lagaye ho-->
         <LinearLayout
             android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:text="Welcome"
-                android:textColor="#EF0B0B"
+                android:textColor="#0C83E1"
                 android:textSize="10sp" />
             <TextView
                 android:id="@+id/oDate1"
@@ -139,7 +139,8 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:text="Welcome"
-                android:textColor="#0C83E1"
+
+                android:textColor="#EF0B0B"
                 android:textSize="10sp" />
             <TextView
                 android:id="@+id/mAmmount1"
@@ -215,7 +216,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:text="Welcome"
-                android:textColor="#0C83E1"
+                android:textColor="#EF0B0B"
                 android:textSize="10sp" />
             <TextView
                 android:id="@+id/mAmmount2"

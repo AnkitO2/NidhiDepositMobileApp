@@ -3,6 +3,7 @@ package com.example.nidhidepositapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.nidhidepositapp.Request.MemberFDPlanListRequest;
@@ -29,7 +31,7 @@ public class PlanList extends AppCompatActivity {
 private ListPlanBinding binding;
 SharedPreferences sharedPreferences;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         binding = ListPlanBinding.inflate(getLayoutInflater());
         sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
@@ -39,7 +41,15 @@ SharedPreferences sharedPreferences;
         binding.menuIcon.setOnClickListener(v -> {
             binding.drawerLayout1.openDrawer(GravityCompat.START);
         });
-
+        binding.accountId1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlanList.this,PlanDetail.class);
+                intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
+                intent.putExtra("token",""+sharedPreferences.getString("token",""));
+                startActivity(intent);
+            }
+        });
         binding.navigationView1.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -100,8 +110,10 @@ SharedPreferences sharedPreferences;
             public void onResponse(Call<MemberFDPlanListResponse> call, Response<MemberFDPlanListResponse> response) {
                 if (response.body().getMessage().equalsIgnoreCase("Successful")){
                     Log.d("Response", "Body: " + response.body().toString());
+
                     binding.massage.setText(response.body().getMessage());
                     List<MemberFDPlan>list = response.body().getMemberFDPlanList();
+
                     binding.accountId1.setText(list.get(0).getAccountId());
                     binding.oDate1.setText(list.get(0).getAccountOpenDate());
                     binding.mAmmount1.setText(list.get(0).getMIPAmount());
@@ -117,7 +129,6 @@ SharedPreferences sharedPreferences;
                     binding.pAmmount2.setText(list.get(0).getPlanAmount());
                     binding.pNo2.setText(list.get(0).getPlanNo());
                     binding.pType2.setText(list.get(0).getPlanType());
-
                 }else {
                     Toast.makeText(PlanList.this, "response is not successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(PlanList.this,LoginActivity.class);
