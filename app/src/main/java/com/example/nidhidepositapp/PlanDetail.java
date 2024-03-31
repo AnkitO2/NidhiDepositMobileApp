@@ -51,18 +51,18 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan2) {
-                    Intent intent = new Intent(PlanDetail.this,PlanList.class);
+                    Intent intent = new Intent(PlanDetail.this,PlanFdListAdapter.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     intent.putExtra("AccountId",""+sharedPreferences.getString("AccountId",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(PlanDetail.this,MemberDashboard.class);
+                    Intent intent = new Intent(PlanDetail.this,LedgerList.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(PlanDetail.this,LedgerList.class);
+                    Intent intent =new Intent(PlanDetail.this,Member_R_List.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);

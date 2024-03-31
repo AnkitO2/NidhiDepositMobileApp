@@ -56,14 +56,15 @@ String AccountId ="";
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(Member_R_Detail.this,PlanDetail.class);
+                    Intent intent = new Intent(Member_R_Detail.this,LedgerList.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(Member_R_Detail.this,LedgerList.class);
+                    Intent intent =new Intent(Member_R_Detail.this,MemberListAdapter.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
+                    intent.putExtra("AccountId",""+sharedPreferences.getString("AccountId",""));
                     startActivity(intent);
                 }  else if (itemId == R.id.Loan5) {
                     Intent intent = new Intent(Member_R_Detail.this,LoginActivity.class);

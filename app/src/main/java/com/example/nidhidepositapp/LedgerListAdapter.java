@@ -23,6 +23,7 @@ public class LedgerListAdapter extends RecyclerView.Adapter<LedgerListAdapter.Vi
         this.context = context;
     }
 
+
     public LedgerListAdapter(List<MemberSavingLedger> memberSavingLedgerList) {
         this.memberSavingLedgerList = memberSavingLedgerList;
 
@@ -48,7 +49,6 @@ public class LedgerListAdapter extends RecyclerView.Adapter<LedgerListAdapter.Vi
             context.startActivity(intent);
             }
         });
-
         holder.Deposit.setText(""+memberSavingLedger.getDeposit());
         holder.TransDate.setText(""+memberSavingLedger.getTransDate());
         holder.TransId.setText(""+memberSavingLedger.getTransId());
@@ -65,7 +65,6 @@ public class LedgerListAdapter extends RecyclerView.Adapter<LedgerListAdapter.Vi
             TransDate = itemView.findViewById(R.id.TransDate);
             TransId = itemView.findViewById(R.id.TransId);
             Withdrawl = itemView.findViewById(R.id.Withdrawl);
-
         }
     }
 }

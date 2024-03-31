@@ -23,13 +23,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LedgerDetail extends AppCompatActivity {
+    String TransId = "";
 private DetailLedgerBinding binding;
 SharedPreferences sharedPreferences;
-String TransId = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding =DetailLedgerBinding.inflate(getLayoutInflater());
+        binding = DetailLedgerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
@@ -57,17 +58,19 @@ String TransId = "";
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(LedgerDetail.this,PlanDetail.class);
+                    Intent intent = new Intent(LedgerDetail.this,LedgerListAdapter.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
+
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(LedgerDetail.this,LedgerList.class);
+                    Intent intent =new Intent(LedgerDetail.this,Member_R_List.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 }  else if (itemId ==R.id.Loan5) {
                     Intent intent = new Intent(LedgerDetail.this,LoginActivity.class);
+                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("loginStatus", "");
                     editor.apply();
@@ -101,7 +104,6 @@ String TransId = "";
                        binding.homeData10.setText(response.body().getMemberSavingLedgerDetail().getTransactionDate());
                        binding.homeData11.setText(response.body().getMemberSavingLedgerDetail().getVoucherId());
                        binding.homeData12.setText(response.body().getMemberSavingLedgerDetail().getWithdrawl());
-
                 }else {
                     Toast.makeText(LedgerDetail.this, "response is not successfully", Toast.LENGTH_SHORT).show();
                     Intent intent =new Intent(LedgerDetail.this,LoginActivity.class);

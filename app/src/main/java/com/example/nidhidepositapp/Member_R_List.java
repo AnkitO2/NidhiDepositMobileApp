@@ -88,11 +88,11 @@ SharedPreferences sharedPreferences;
             public void onResponse(Call<MemberRDPlanListResponse> call, Response<MemberRDPlanListResponse> response) {
             if(response.body().getMessage().equalsIgnoreCase("Successful")){
                 Log.d("Response", "Body: " + response.body().toString());
-                 binding.accountId1.setText(response.body().getMessage());
+                 //binding.accountId1.setText(response.body().getMessage());
                 List<MemberRDPlan>list = response.body().getMemberRDPlanList();
 
                 if (list.size()>0){
-                    Toast.makeText(Member_R_List.this, ""+list.size(), Toast.LENGTH_SHORT).show();
+
                     binding.recyclerview.setLayoutManager(new LinearLayoutManager(Member_R_List.this, RecyclerView.VERTICAL,false));
                     binding.recyclerview.setAdapter(new MemberListAdapter(list,Member_R_List.this));
                 }

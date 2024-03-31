@@ -92,10 +92,9 @@ SharedPreferences sharedPreferences;
 
                     List<MemberFDPlan>list = response.body().getMemberFDPlanList();
 
-                    AccountId = response.body().getMemberFDPlanList().get(0).getAccountId();
+                   // AccountId = response.body().getMemberFDPlanList().get(0).getAccountId();
 
                     if (list.size()>0){
-                        Toast.makeText(PlanList.this, ""+list.size(), Toast.LENGTH_SHORT).show();
                         binding.recyclerview.setLayoutManager(new LinearLayoutManager(PlanList.this, RecyclerView.VERTICAL,false));
                         binding.recyclerview.setAdapter(new PlanFdListAdapter(list,PlanList.this));
                     }

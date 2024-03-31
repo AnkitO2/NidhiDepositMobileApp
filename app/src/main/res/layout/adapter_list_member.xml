@@ -28,6 +28,7 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:text="Welcome"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="12dp"
                 tools:ignore="TextSizeCheck">

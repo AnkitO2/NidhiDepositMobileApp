@@ -58,6 +58,7 @@ SharedPreferences sharedPreferences;
                     Intent intent = new Intent(LedgerList.this,MemberDashboard.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
+                    intent.putExtra("AccountId",""+sharedPreferences.getString("AccountId",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
                     Intent intent =new Intent(LedgerList.this,Member_R_List.class);
@@ -92,7 +93,6 @@ SharedPreferences sharedPreferences;
                     List<MemberSavingLedger>list = response.body().getMemberSavingLedgerList();
 
                     if (list.size()>0){
-                        Toast.makeText(LedgerList.this, ""+list.size(), Toast.LENGTH_SHORT).show();
                         binding.recyclerview.setLayoutManager(new LinearLayoutManager(LedgerList.this, RecyclerView.VERTICAL,false));
                         binding.recyclerview.setAdapter(new LedgerListAdapter(list));
                     }
