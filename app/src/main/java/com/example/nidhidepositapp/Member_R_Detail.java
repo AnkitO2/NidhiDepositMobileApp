@@ -24,13 +24,19 @@ import retrofit2.Response;
 public class Member_R_Detail extends AppCompatActivity {
 private DetailRMemberBinding binding;
 SharedPreferences sharedPreferences;
+String AccountId ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DetailRMemberBinding.inflate(getLayoutInflater());
-        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-        RDPlanDetailData();
         setContentView(binding.getRoot());
+
+        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        if (!getIntent().getStringExtra("AccountId").isEmpty()){
+            AccountId = getIntent().getStringExtra("AccountId");
+            RDPlanDetailData();
+        }
+
 
         binding.menuIcon.setOnClickListener(v -> {
             binding.drawerLayout1.openDrawer(GravityCompat.START);
@@ -59,22 +65,7 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(Member_R_Detail.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan6) {
-                    Intent intent = new Intent(Member_R_Detail.this,Member_R_List.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan7) {
-                    Intent intent = new Intent(Member_R_Detail.this,MemberDashboard.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId == R.id.Loan8) {
+                }  else if (itemId == R.id.Loan5) {
                     Intent intent = new Intent(Member_R_Detail.this,LoginActivity.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -88,9 +79,11 @@ SharedPreferences sharedPreferences;
     }
 void RDPlanDetailData(){
     MemberRDPlanDetailRequest request =new  MemberRDPlanDetailRequest();
-    request.setMemberId(getIntent().getStringExtra("memberId"));
-    request.setTokenString(getIntent().getStringExtra("token"));
-    request.setAccountId("DD101000004");
+    request.setMemberId(sharedPreferences.getString("memberId",""));
+    //request.setMemberId(getIntent().getStringExtra("memberId"));
+    request.setTokenString(sharedPreferences.getString("token",""));
+   // request.setTokenString(getIntent().getStringExtra("token"));
+    request.setAccountId(AccountId);
 
     RetrofitClient.getClient().RDPlanDetailActivity(request).enqueue(new Callback<MemberRDPlanDetailResponse>() {
         @Override

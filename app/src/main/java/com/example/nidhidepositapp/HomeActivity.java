@@ -54,31 +54,16 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(HomeActivity.this,PlanDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan4) {
                     Intent intent = new Intent(HomeActivity.this,LedgerList.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(HomeActivity.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan6) {
+                } else if (itemId==R.id.Loan4) {
                     Intent intent = new Intent(HomeActivity.this,Member_R_List.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId ==R.id.Loan7) {
-                    Intent intent = new Intent(HomeActivity.this,Member_R_Detail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan8) {
+                }  else if (itemId==R.id.Loan5) {
                     Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -93,7 +78,6 @@ SharedPreferences sharedPreferences;
         MemberHomePageAndDashboardRequest request = new MemberHomePageAndDashboardRequest();
         request.setMemberId(getIntent().getStringExtra("memberId"));
         request.setTokenString(getIntent().getStringExtra("token"));
-
         RetrofitClient.getClient().ClientDashboard(request).enqueue(new Callback<MemberHomePageAndDashboardResponse>() {
             @Override
             public void onResponse(Call<MemberHomePageAndDashboardResponse> call, Response<MemberHomePageAndDashboardResponse> response) {

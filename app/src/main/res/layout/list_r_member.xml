@@ -52,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:padding="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
@@ -116,6 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -186,6 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -194,6 +197,7 @@
                 android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:text="Welcome"
                 android:textAlignment="center"
                 android:textColor="#EA0C0C"
@@ -256,6 +260,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:visibility="gone
+"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -326,6 +332,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -392,6 +399,10 @@
                 android:textColor="#EA0C0C"
                 android:textSize="10sp" />
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerview"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView1"

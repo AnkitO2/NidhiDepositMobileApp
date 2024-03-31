@@ -25,16 +25,23 @@ import retrofit2.Response;
 public class LedgerDetail extends AppCompatActivity {
 private DetailLedgerBinding binding;
 SharedPreferences sharedPreferences;
+String TransId = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding =DetailLedgerBinding.inflate(getLayoutInflater());
-        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-        LedgerDetailData();
         setContentView(binding.getRoot());
+
+        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        if (!getIntent().getStringExtra("TransId").isEmpty()){
+            TransId = getIntent().getStringExtra("TransId");
+            LedgerDetailData();
+        }
+
         binding.menuIcon.setOnClickListener(v -> {
             binding.drawerLayout1.openDrawer(GravityCompat.START);
         });
+
         binding.navigationView1.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -59,22 +66,7 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(LedgerDetail.this,MemberDashboard.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan6) {
-                    Intent intent = new Intent(LedgerDetail.this,Member_R_List.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan7) {
-                    Intent intent = new Intent(LedgerDetail.this,Member_R_Detail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan8) {
+                }  else if (itemId ==R.id.Loan5) {
                     Intent intent = new Intent(LedgerDetail.this,LoginActivity.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("loginStatus", "");
@@ -87,9 +79,11 @@ SharedPreferences sharedPreferences;
     }
     void LedgerDetailData(){
         MemberSavingLedgerDetailRequest request = new MemberSavingLedgerDetailRequest();
-        request.setMemberId(getIntent().getStringExtra("memberId"));
-        request.setTokenString(getIntent().getStringExtra("token"));
-        request.setTransId("4");
+        request.setMemberId(sharedPreferences.getString("memberId",""));
+//        request.setMemberId(getIntent().getStringExtra("memberId"));
+        request.setTokenString(sharedPreferences.getString("token",""));
+//        request.setTokenString(getIntent().getStringExtra("token"));
+        request.setTransId(TransId);
         RetrofitClient.getClient().LedgerDetailActivity(request).enqueue(new Callback<MemberSavingLedgerDetailResponse>() {
             @Override
             public void onResponse(Call<MemberSavingLedgerDetailResponse> call, Response<MemberSavingLedgerDetailResponse> response) {

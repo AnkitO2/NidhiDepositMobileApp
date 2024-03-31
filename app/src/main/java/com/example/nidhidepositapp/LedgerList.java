@@ -2,6 +2,8 @@ package com.example.nidhidepositapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +29,7 @@ import retrofit2.Response;
 public class LedgerList extends AppCompatActivity {
 private ListLedgerBinding binding;
 SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -52,32 +55,17 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(LedgerList.this,PlanDetail.class);
+                    Intent intent = new Intent(LedgerList.this,MemberDashboard.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(LedgerList.this,MemberDashboard.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(LedgerList.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan6) {
-                    Intent intent = new Intent(LedgerList.this,Member_R_List.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan7) {
-                    Intent intent = new Intent(LedgerList.this,Member_R_Detail.class);
+                    Intent intent =new Intent(LedgerList.this,Member_R_List.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 }
-                 else if (itemId == R.id.Loan8) {
+                 else if (itemId == R.id.Loan5) {
                     Intent intent = new Intent(LedgerList.this,LoginActivity.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("loginStatus", "");
@@ -94,22 +82,21 @@ SharedPreferences sharedPreferences;
         request.setTokenString(getIntent().getStringExtra("token"));
         request.setFromDate("null");
         request.setToDate("null");
+
         RetrofitClient.getClient().LedgerListActivity(request).enqueue(new Callback<MemberSavingLedgerListResponse>() {
             @Override
             public void onResponse(Call<MemberSavingLedgerListResponse> call, Response<MemberSavingLedgerListResponse> response) {
                 if (response.body().getMessage().equalsIgnoreCase("Successful")){
                     Log.d("Response", "Body: " + response.body().toString());
-                    binding.massage.setText(response.body().getMessage());
-                    List<MemberSavingLedger>list = response.body().getMemberSavingLedgerList();
-                   binding.deposit1.setText(list.get(0).getDeposit());
-                   binding.tDate1.setText(list.get(0).getTransDate());
-                   binding.tId1.setText(list.get(0).getTransId());
-                   binding.withdral1.setText(list.get(0).getWithdrawl());
 
-                    binding.deposit2.setText(list.get(0).getDeposit());
-                    binding.tDate2.setText(list.get(0).getTransDate());
-                    binding.tId2.setText(list.get(0).getTransId());
-                    binding.withdral2.setText(list.get(0).getWithdrawl());
+                    List<MemberSavingLedger>list = response.body().getMemberSavingLedgerList();
+
+                    if (list.size()>0){
+                        Toast.makeText(LedgerList.this, ""+list.size(), Toast.LENGTH_SHORT).show();
+                        binding.recyclerview.setLayoutManager(new LinearLayoutManager(LedgerList.this, RecyclerView.VERTICAL,false));
+                        binding.recyclerview.setAdapter(new LedgerListAdapter(list));
+                    }
+
                 }else {
                     Toast.makeText(LedgerList.this, "response is not successfully", Toast.LENGTH_SHORT).show();
                     Intent intent =new Intent(LedgerList.this,LoginActivity.class);

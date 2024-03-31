@@ -9,20 +9,12 @@
         android:title="MemberFDPlanList"/>
     <item android:id="@+id/Loan3"
         android:icon="@drawable/person_icon"
-        android:title="MemberFDPlanDetail"/>
+        android:title="MemberSavingLedgerList"/>
     <item android:id="@+id/Loan4"
         android:icon="@drawable/person_icon"
-        android:title="MemberSavingLedgerList"/>
-    <item android:id="@+id/Loan5"
-        android:icon="@drawable/person_icon"
-        android:title="MemberSavingLedgerDetail"/>
-    <item android:id="@+id/Loan6"
-        android:icon="@drawable/person_icon"
         android:title="MemberRDPlanList"/>
-    <item android:id="@+id/Loan7"
-        android:icon="@drawable/person_icon"
-        android:title="MemberRDPlanDetail"/>
-    <item android:id="@+id/Loan8"
+
+    <item android:id="@+id/Loan5"
         android:icon="@drawable/person_icon"
         android:title="Logout"/>
 </group>

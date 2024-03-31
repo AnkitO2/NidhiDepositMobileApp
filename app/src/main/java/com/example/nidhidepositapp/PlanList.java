@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import retrofit2.Response;
 
 public class PlanList extends AppCompatActivity {
 private ListPlanBinding binding;
+    String AccountId ="";
 SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,15 +43,7 @@ SharedPreferences sharedPreferences;
         binding.menuIcon.setOnClickListener(v -> {
             binding.drawerLayout1.openDrawer(GravityCompat.START);
         });
-        binding.accountId1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PlanList.this,PlanDetail.class);
-                intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
-                intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                startActivity(intent);
-            }
-        });
+
         binding.navigationView1.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -65,31 +59,16 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
-                    Intent intent = new Intent(PlanList.this,PlanDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan4) {
                     Intent intent = new Intent(PlanList.this,LedgerList.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent =new Intent(PlanList.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan6) {
+                } else if (itemId==R.id.Loan4) {
                     Intent intent = new Intent(PlanList.this,Member_R_List.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId ==R.id.Loan7) {
-                    Intent intent = new Intent(PlanList.this,Member_R_Detail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan8) {
+                }  else if (itemId ==R.id.Loan5) {
                     Intent intent = new Intent(PlanList.this,LoginActivity.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -111,24 +90,17 @@ SharedPreferences sharedPreferences;
                 if (response.body().getMessage().equalsIgnoreCase("Successful")){
                     Log.d("Response", "Body: " + response.body().toString());
 
-                    binding.massage.setText(response.body().getMessage());
                     List<MemberFDPlan>list = response.body().getMemberFDPlanList();
 
-                    binding.accountId1.setText(list.get(0).getAccountId());
-                    binding.oDate1.setText(list.get(0).getAccountOpenDate());
-                    binding.mAmmount1.setText(list.get(0).getMIPAmount());
-                    binding.maturatityAmmount1.setText(list.get(0).getMaturityAmount());
-                    binding.pAmmount1.setText(list.get(0).getPlanAmount());
-                    binding.pNo1.setText(list.get(0).getPlanNo());
-                    binding.pType1.setText(list.get(0).getPlanType());
+                    AccountId = response.body().getMemberFDPlanList().get(0).getAccountId();
 
-                    binding.accountId2.setText(list.get(0).getAccountId());
-                    binding.oDate2.setText(list.get(0).getAccountOpenDate());
-                    binding.mAmmount2.setText(list.get(0).getMIPAmount());
-                    binding.maturatityAmmount2.setText(list.get(0).getMaturityAmount());
-                    binding.pAmmount2.setText(list.get(0).getPlanAmount());
-                    binding.pNo2.setText(list.get(0).getPlanNo());
-                    binding.pType2.setText(list.get(0).getPlanType());
+                    if (list.size()>0){
+                        Toast.makeText(PlanList.this, ""+list.size(), Toast.LENGTH_SHORT).show();
+                        binding.recyclerview.setLayoutManager(new LinearLayoutManager(PlanList.this, RecyclerView.VERTICAL,false));
+                        binding.recyclerview.setAdapter(new PlanFdListAdapter(list,PlanList.this));
+                    }
+
+
                 }else {
                     Toast.makeText(PlanList.this, "response is not successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(PlanList.this,LoginActivity.class);

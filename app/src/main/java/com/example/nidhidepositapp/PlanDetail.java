@@ -23,17 +23,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlanDetail extends AppCompatActivity {
+    String AccountId ="";
 private DetailPlanBinding binding;
 SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DetailPlanBinding.inflate(getLayoutInflater());
-        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-        PlanDetailData();
         setContentView(binding.getRoot());
 
-        binding.menuIcon.setOnClickListener(v -> {
+        sharedPreferences =getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+       if (!getIntent().getStringExtra("AccountId").isEmpty()){
+           AccountId = getIntent().getStringExtra("AccountId");
+           PlanDetailData();
+       }
+
+       binding.menuIcon.setOnClickListener(v -> {
             binding.drawerLayout1.openDrawer(GravityCompat.START);
         });
         binding.navigationView1.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +54,7 @@ SharedPreferences sharedPreferences;
                     Intent intent = new Intent(PlanDetail.this,PlanList.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
+                    intent.putExtra("AccountId",""+sharedPreferences.getString("AccountId",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan3) {
                     Intent intent = new Intent(PlanDetail.this,MemberDashboard.class);
@@ -60,22 +66,7 @@ SharedPreferences sharedPreferences;
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(PlanDetail.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan6) {
-                    Intent intent = new Intent(PlanDetail.this,Member_R_List.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan7) {
-                    Intent intent = new Intent(PlanDetail.this,Member_R_Detail.class);
-                    intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId ==R.id.Loan8) {
+                }   else if (itemId ==R.id.Loan5) {
                     Intent intent = new Intent(PlanDetail.this,LoginActivity.class);
                     intent.putExtra("memberId",""+getIntent().getStringExtra("memberId"));
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -89,9 +80,12 @@ SharedPreferences sharedPreferences;
     }
     void PlanDetailData(){
         MemberFDPlanDetailRequest request = new MemberFDPlanDetailRequest();
-        request.setMemberId(getIntent().getStringExtra("memberId"));
-        request.setTokenString(getIntent().getStringExtra("token"));
-        request.setAccountId("MI101000006");
+        request.setMemberId(sharedPreferences.getString("memberId",""));
+        //request.setMemberId(getIntent().getStringExtra("memberId"));
+        request.setTokenString(sharedPreferences.getString("token",""));
+        //request.setTokenString(getIntent().getStringExtra("token"));
+        request.setAccountId(AccountId);
+        //request.setAccountId("FD101000005");
         RetrofitClient.getClient().PlanDetailActivity(request).enqueue(new Callback<MemberFDPlanDetailResponse>() {
             @Override
             public void onResponse(Call<MemberFDPlanDetailResponse> call, Response<MemberFDPlanDetailResponse> response) {

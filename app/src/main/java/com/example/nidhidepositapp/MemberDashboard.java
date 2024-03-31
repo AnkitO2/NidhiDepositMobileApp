@@ -44,31 +44,16 @@ public class MemberDashboard extends AppCompatActivity {
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId ==R.id.Loan3) {
-                    Intent intent = new Intent(MemberDashboard.this,PlanDetail.class);
+                    Intent intent = new Intent(MemberDashboard.this,LedgerList.class);
                     intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
                 } else if (itemId==R.id.Loan4) {
-                    Intent intent =new Intent(MemberDashboard.this,LedgerList.class);
+                    Intent intent =new Intent(MemberDashboard.this,Member_R_List.class);
                     intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
                     intent.putExtra("token",""+sharedPreferences.getString("token",""));
                     startActivity(intent);
-                } else if (itemId==R.id.Loan5) {
-                    Intent intent = new Intent(MemberDashboard.this,LedgerDetail.class);
-                    intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId==R.id.Loan6) {
-                    Intent intent = new Intent(MemberDashboard.this,Member_R_List.class);
-                    intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId == R.id.Loan7) {
-                    Intent intent = new Intent(MemberDashboard.this,Member_R_Detail.class);
-                    intent.putExtra("memberId",""+sharedPreferences.getString("memberId",""));
-                    intent.putExtra("token",""+sharedPreferences.getString("token",""));
-                    startActivity(intent);
-                } else if (itemId == R.id.Loan8) {
+                } else if (itemId == R.id.Loan5) {
                     Intent intent = new Intent(MemberDashboard.this,LoginActivity.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("loginStatus", "");

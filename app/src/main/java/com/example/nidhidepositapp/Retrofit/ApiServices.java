@@ -21,14 +21,15 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiServices {
+
 @POST("Service/MemberLoginWithIDAndPassword")
-Call<MemberLoginWithIDAndPasswordResponse>LoginIdAndPassword(@Body MemberLoginWithIDAndPasswordRequest memberLoginWithIDAndPasswordRequest);
+    Call<MemberLoginWithIDAndPasswordResponse>LoginIdAndPassword(@Body MemberLoginWithIDAndPasswordRequest memberLoginWithIDAndPasswordRequest);
 
 @POST("Service/MemberHomePageAndDashboard")
-Call<MemberHomePageAndDashboardResponse>ClientDashboard(@Body MemberHomePageAndDashboardRequest memberHomePageAndDashboardRequest);
+    Call<MemberHomePageAndDashboardResponse>ClientDashboard(@Body MemberHomePageAndDashboardRequest memberHomePageAndDashboardRequest);
 
 @POST("Service/MemberFDPlanList")
-Call<MemberFDPlanListResponse>PlanListActivity(@Body MemberFDPlanListRequest memberFDPlanListRequest);
+    Call<MemberFDPlanListResponse>PlanListActivity(@Body MemberFDPlanListRequest memberFDPlanListRequest);
 
 @POST("Service/MemberFDPlanDetail")
     Call<MemberFDPlanDetailResponse>PlanDetailActivity(@Body MemberFDPlanDetailRequest memberFDPlanDetailRequest);

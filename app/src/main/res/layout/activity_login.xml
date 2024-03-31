@@ -8,12 +8,11 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/valourinfortechlogopng"
+        android:layout_width="204dp"
+        android:layout_height="210dp"
         android:layout_gravity="center"
-        />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/valourinfortechlogopng" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
